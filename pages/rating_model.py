@@ -17,6 +17,7 @@ def get_metrics(pipe):
     cm=confusion_matrix(test_data["categories"].to_list(),pipe.predict(test_data["text"].to_list()))
     disp = ConfusionMatrixDisplay(confusion_matrix=cm)
     st.pyplot(disp)
+    
 def app():
     ### this would give you the title on the browser tab
     st.set_page_config(page_title="Rating Demo")
