@@ -11,7 +11,7 @@ def get_metrics(pipe):
     test_data=pd.read_csv("datasets/test_data_tagging.csv")
     st.write('Accuracy of this model ' + str(pipe.score(test_data["text"].to_list(),test_data["categories"].to_list())))
     st.write('Precision of this model ' + str(precision_score(test_data["categories"].to_list(),pipe.predict(test_data["text"].to_list()),average='weighted')))
-    
+    st.write("Classification Report"+classification_report(test_data["categories"].to_list(),pipe.predict(test_data["text"].to_list())))
 
 def app():
     label_dict={0:"Active Life", 1:"Automotive",2:"Beauty & Spas",3:"Restaurants",4:"Shopping"}
