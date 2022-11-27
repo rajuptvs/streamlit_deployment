@@ -10,12 +10,12 @@ import pickle
 def app():
     ### this would give you the title on the browser tab
     st.set_page_config(page_title="Rating Demo")
-    option = st.selectbox("Please pick the model you want to test.",('Linear Support Vector','GridSearch Classification'))
+    option = st.selectbox("Please pick the model you want to test.",('Linear Support Vector','Linear Support Vector with Oversampling'))
     if option == 'Linear Support Vector':
         with open('models/svcpipe.pickle', 'rb') as f:
             pipe = pickle.load(f)
-    elif option == 'GridSearch Classification':
-        with open('models/gridsearchcv.pkl', 'rb') as f:
+    elif option == 'Linear Support Vector with Oversampling':
+        with open('models/svc_oversample.pickle', 'rb') as f:
             pipe = pickle.load(f)
     st.header("Rating Prediction using" + option)
     review=st.text_input("Enter your review for the prediction")
