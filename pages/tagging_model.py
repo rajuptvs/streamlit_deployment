@@ -14,12 +14,11 @@ def app():
         pipe = pickle.load(f)
     st.header("Tagging Prediction using Linear SVC")
     review=st.text_input("Enter your review for the prediction")
-    review=label_dict.get(review)
     st.write("Your review is:",review)
     
     if st.button("Predict"):
         pred=pipe.predict([review])
-        st.write("Your review is rated:",pred[0])
+        st.write("Your review can be tagged as :",label_dict.get(pred[0]))
         
 if __name__=='__main__':
     app()
