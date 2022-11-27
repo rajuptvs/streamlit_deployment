@@ -6,6 +6,10 @@ from sklearn.svm import LinearSVC
 from sklearn.pipeline import Pipeline, FeatureUnion
 from sklearn.metrics import accuracy_score,precision_score,recall_score,classification_report
 import pickle
+def get_metrics(pipe):
+    test_data=pd.read_csv("datasets/testing_data_rating.csv")
+    st.write('Accuracy of this model ' + str(pipe.score(test_data["text"].to_list(),test_data["categories"].to_list())))
+    st.write('Precision of this model ' + str(precision_score(test_data["categories"].to_list(),pipe.predict(test_data["text"].to_list()),average='weighted')))
 
 def app():
     ### this would give you the title on the browser tab
@@ -24,6 +28,8 @@ def app():
     if st.button("Predict"):
         pred=pipe.predict([review])
         st.write("Your review is rated:",pred[0])
+    
+    get_metrics(pipe)
 
         
 if __name__=='__main__':
