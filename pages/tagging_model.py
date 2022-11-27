@@ -18,17 +18,16 @@ def get_metrics(pipe):
     report=classification_report(test_data["categories"].to_list(),pipe.predict(test_data["text"].to_list()),output_dict=True)
     df = pd.DataFrame(report).transpose()
     st.write(df)
-    cm=confusion_matrix(test_data["categories"].to_list(),pipe.predict(test_data["text"].to_list()))
     st.write("Confusion Matrix : ")
-    fig, ax = plt.subplots(figsize=(2,2))
-
+    cm=confusion_matrix(test_data["categories"].to_list(),pipe.predict(test_data["text"].to_list()))
+    fig, ax = plt.subplots(figsize=(7.5, 7.5))
     ax.matshow(cm, cmap=plt.cm.Blues, alpha=0.3)
     for i in range(cm.shape[0]):
         for j in range(cm.shape[1]):
-            ax.text(x=j, y=i,s=cm[i, j], va='center', ha='center',size=4)
-    plt.xlabel('Predictions',size=3)
-    plt.ylabel('Actuals',size=3)
-    plt.title('Confusion Matrix',size=4)
+            ax.text(x=j, y=i,s=cm[i, j], va='center', ha='center', size='large')
+    plt.xlabel('Predictions', fontsize=15)
+    plt.ylabel('Actuals', fontsize=15)
+    plt.title('Confusion Matrix', fontsize=15)
     st.pyplot(fig)
 
 def app():

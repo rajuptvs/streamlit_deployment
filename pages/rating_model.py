@@ -16,16 +16,16 @@ def get_metrics(pipe):
     st.write(df)
     st.write("Confusion Matrix : ")
     cm=confusion_matrix(test_data["rating"].to_list(),pipe.predict(test_data["text"].to_list()))
-    fig, ax = plt.subplots(figsize=(1,1))
+    fig, ax = plt.subplots(figsize=(7.5, 7.5))
     ax.matshow(cm, cmap=plt.cm.Blues, alpha=0.3)
     for i in range(cm.shape[0]):
         for j in range(cm.shape[1]):
-            ax.text(x=j, y=i,s=cm[i, j], va='center', ha='center')
-    plt.xlabel('Predictions')
-    plt.ylabel('Actuals')
-    plt.title('Confusion Matrix')
+            ax.text(x=j, y=i,s=cm[i, j], va='center', ha='center', size='large')
+    plt.xlabel('Predictions', fontsize=15)
+    plt.ylabel('Actuals', fontsize=15)
+    plt.title('Confusion Matrix', fontsize=15)
     st.pyplot(fig)
-    
+
 def app():
     ### this would give you the title on the browser tab
     st.set_page_config(page_title="Rating Demo")
