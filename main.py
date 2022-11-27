@@ -1,6 +1,6 @@
 import streamlit as st
-from multiapp import MultiApp
-from apps import rating_model,tagging_model
+
+
 
 
 
