@@ -4,6 +4,7 @@ import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.svm import LinearSVC
 from sklearn.pipeline import Pipeline, FeatureUnion
+import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score,precision_score,recall_score,classification_report,confusion_matrix, ConfusionMatrixDisplay
 import pickle
 def get_metrics(pipe):
