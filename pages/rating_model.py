@@ -4,7 +4,7 @@ import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.svm import LinearSVC
 from sklearn.pipeline import Pipeline, FeatureUnion
-from sklearn.metrics import accuracy_score,precision_score,recall_score,classification_report
+from sklearn.metrics import accuracy_score,precision_score,recall_score,classification_report,confusion_matrix, ConfusionMatrixDisplay
 import pickle
 def get_metrics(pipe):
     test_data=pd.read_csv("datasets/testing_data_rating.csv")
@@ -13,6 +13,9 @@ def get_metrics(pipe):
     report=classification_report(test_data["rating"].to_list(),pipe.predict(test_data["text"].to_list()),output_dict=True)
     df = pd.DataFrame(report).transpose()
     st.write(df)
+    cm=confusion_matrix(test_data["categories"].to_list(),pipe.predict(test_data["text"].to_list()))
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm)
+    st.pyplot(disp)
 def app():
     ### this would give you the title on the browser tab
     st.set_page_config(page_title="Rating Demo")
