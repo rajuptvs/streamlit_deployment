@@ -10,7 +10,7 @@ st.write("## Welcome to our Review and Tagging Prediction app based on Yelp Data
 st.markdown(
     """
     **👈 Select a demo from the sidebar** to see our different types of models (Review and Tagging)
-    of what Streamlit can do!
+    of what our models can do!
     ### Want to peek at our codebase?
     - Check out our team [Git repo](https://github.com/harshika14/CMPE-257_ProjectTeam12)
     - Dataset has been obtained from [Yelp](https://www.yelp.com/dataset)
