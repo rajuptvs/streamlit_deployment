@@ -34,7 +34,7 @@ def app():
         pred=pipe.predict([review])
         st.write("Your review can be tagged as :",label_dict.get(pred[0]))
     
-    get_metrics()
+    get_metrics(pipe)
         
 if __name__=='__main__':
     app()
