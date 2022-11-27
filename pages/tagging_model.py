@@ -8,11 +8,13 @@ from sklearn.metrics import accuracy_score,precision_score,recall_score,classifi
 import pickle
 
 def app():
+    label_dict={0:"Active Life", 1:"Automotive",2:"Beauty & Spas",3:"Restaurants",4:"Shopping"}
     st.set_page_config(page_title="Tagging Demo")
     with open('models/tagging_model.pickle', 'rb') as f:
         pipe = pickle.load(f)
     st.header("Tagging Prediction using Linear SVC")
     review=st.text_input("Enter your review for the prediction")
+    review=label_dict.get(review)
     st.write("Your review is:",review)
     
     if st.button("Predict"):
