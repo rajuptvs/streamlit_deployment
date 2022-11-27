@@ -7,6 +7,8 @@ from sklearn.pipeline import Pipeline, FeatureUnion
 from sklearn.metrics import accuracy_score,precision_score,recall_score,classification_report
 import pickle
 
+def get_metrics():
+    st.write("Testing out definition")
 def app():
     label_dict={0:"Active Life", 1:"Automotive",2:"Beauty & Spas",3:"Restaurants",4:"Shopping"}
     st.set_page_config(page_title="Tagging Demo")
@@ -26,6 +28,8 @@ def app():
     review=st.text_input("Enter your review for the prediction")
     st.write("Your review is:",review)
     
+    get_metrics()
+
     if st.button("Predict"):
         pred=pipe.predict([review])
         st.write("Your review can be tagged as :",label_dict.get(pred[0]))
