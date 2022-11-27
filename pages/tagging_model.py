@@ -8,8 +8,7 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score,precision_score,recall_score,classification_report,confusion_matrix, ConfusionMatrixDisplay
 import pickle
 
-def confusion_matrix():
-    test_data=pd.read_csv("datasets/test_data_tagging.csv")
+
 
 
 def get_metrics(pipe):
