@@ -19,15 +19,15 @@ def get_metrics(pipe):
     df = pd.DataFrame(report).transpose()
     st.write(df)
     cm=confusion_matrix(test_data["categories"].to_list(),pipe.predict(test_data["text"].to_list()))
-    fig, ax = st.pyplot.subplots(figsize=(7.5, 7.5))
+    fig, ax = plt.subplots(figsize=(7.5, 7.5))
     ax.matshow(cm, cmap=plt.cm.Blues, alpha=0.3)
     for i in range(cm.shape[0]):
         for j in range(cm.shape[1]):
             ax.text(x=j, y=i,s=cm[i, j], va='center', ha='center', size='x-large')
-    st.pyplot.xlabel('Predictions', fontsize=18)
-    st.pyplot.ylabel('Actuals', fontsize=18)
-    st.pyplot.title('Confusion Matrix', fontsize=18)
-    st.pyplot.show()
+    plt.xlabel('Predictions', fontsize=18)
+    plt.ylabel('Actuals', fontsize=18)
+    plt.title('Confusion Matrix', fontsize=18)
+    st.pyplot(fig)
 
 def app():
     label_dict={0:"Active Life", 1:"Automotive",2:"Beauty & Spas",3:"Restaurants",4:"Shopping"}
