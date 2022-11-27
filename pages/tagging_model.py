@@ -28,7 +28,7 @@ def get_metrics(pipe):
     report=classification_report(test_data["categories"].to_list(),pipe.predict(test_data["text"].to_list()),output_dict=True)
     df = pd.DataFrame(report).transpose()
     st.write(df)
-    confusion_matrix(cm)
+    confusion_matrix()
 
 def app():
     label_dict={0:"Active Life", 1:"Automotive",2:"Beauty & Spas",3:"Restaurants",4:"Shopping"}
