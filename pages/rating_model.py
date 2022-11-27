@@ -9,8 +9,10 @@ import pickle
 def get_metrics(pipe):
     test_data=pd.read_csv("datasets/testing_data_rating.csv")
     st.write('Accuracy of this model ' + str(pipe.score(test_data["text"].to_list(),test_data["rating"].to_list())))
-    st.write('Precision of this model ' + str(precision_score(test_data["rating"].to_list(),pipe.predict(test_data["text"].to_list()),average='weighted')))
-    st.write(""+classification_report(test_data["rating"].to_list(),pipe.predict(test_data["text"].to_list())))
+    st.write("Classification Report : ")
+    report=classification_report(test_data["rating"].to_list(),pipe.predict(test_data["text"].to_list()),output_dict=True)
+    df = pd.DataFrame(report).transpose()
+    st.write(df)
 def app():
     ### this would give you the title on the browser tab
     st.set_page_config(page_title="Rating Demo")
