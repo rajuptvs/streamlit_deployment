@@ -12,7 +12,7 @@ def get_metrics(pipe):
     st.write('Accuracy of this model ' + str(pipe.score(test_data["text"].to_list(),test_data["categories"].to_list())))
     st.write('Precision of this model ' + str(precision_score(test_data["categories"].to_list(),pipe.predict(test_data["text"].to_list()),average='weighted')))
     
-    
+
 def app():
     label_dict={0:"Active Life", 1:"Automotive",2:"Beauty & Spas",3:"Restaurants",4:"Shopping"}
     st.set_page_config(page_title="Tagging Demo")
@@ -26,8 +26,6 @@ def app():
     elif option == 'SVM with SGD':
         with open('models/tagging_model_sgd.pickle', 'rb') as f:
             pipe = pickle.load(f)
-    with open('models/tagging_model.pickle', 'rb') as f:
-        pipe = pickle.load(f)
     st.header("Tagging Prediction using "+option)
     review=st.text_input("Enter your review for the prediction")
     st.write("Your review is:",review)
