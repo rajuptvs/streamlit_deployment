@@ -8,6 +8,7 @@ from sklearn.metrics import accuracy_score,precision_score,recall_score,classifi
 import pickle
 
 def app():
+    st.set_page_config(page_title="Plotting Demo", page_icon="📈")
     with open('svcpipe.pickle', 'rb') as f:
         pipe = pickle.load(f)
     st.header("Rating Prediction using Linear SVC")
@@ -17,6 +18,7 @@ def app():
     if st.button("Predict"):
         pred=pipe.predict([review])
         st.write("Your review is rated:",pred[0])
+    st.button("Re-run")
         
 if __name__=='__main__':
     app()
