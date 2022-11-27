@@ -10,6 +10,7 @@ import pickle
 def app():
     label_dict={0:"Active Life", 1:"Automotive",2:"Beauty & Spas",3:"Restaurants",4:"Shopping"}
     st.set_page_config(page_title="Tagging Demo")
+    
     with open('models/tagging_model.pickle', 'rb') as f:
         pipe = pickle.load(f)
     st.header("Tagging Prediction using Linear SVC")
