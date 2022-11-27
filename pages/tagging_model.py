@@ -10,10 +10,19 @@ import pickle
 def app():
     label_dict={0:"Active Life", 1:"Automotive",2:"Beauty & Spas",3:"Restaurants",4:"Shopping"}
     st.set_page_config(page_title="Tagging Demo")
-    
+    option = st.selectbox("Please pick the model you want to test.",('Linear Support Vector','Naive Bayes','SVM with SGD'))
+    if option == 'Linear Support Vector':
+        with open('models/tagging_model.pickle', 'rb') as f:
+            pipe = pickle.load(f)
+    elif option == 'Naive Bayes':
+        with open('models/tagging_model_nb.pickle', 'rb') as f:
+            pipe = pickle.load(f)
+    elif option == 'SVM with SGD':
+        with open('models/tagging_model_sgd.pickle', 'rb') as f:
+            pipe = pickle.load(f)
     with open('models/tagging_model.pickle', 'rb') as f:
         pipe = pickle.load(f)
-    st.header("Tagging Prediction using Linear SVC")
+    st.header("Tagging Prediction using "+option)
     review=st.text_input("Enter your review for the prediction")
     st.write("Your review is:",review)
     
