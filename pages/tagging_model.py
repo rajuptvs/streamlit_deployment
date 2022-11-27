@@ -10,6 +10,15 @@ import pickle
 
 def confusion_matrix():
     test_data=pd.read_csv("datasets/test_data_tagging.csv")
+
+
+def get_metrics(pipe):
+    test_data=pd.read_csv("datasets/test_data_tagging.csv")
+    st.write('Accuracy of this model ' + str(pipe.score(test_data["text"].to_list(),test_data["categories"].to_list())))
+    st.write("Classification Report : ")
+    report=classification_report(test_data["categories"].to_list(),pipe.predict(test_data["text"].to_list()),output_dict=True)
+    df = pd.DataFrame(report).transpose()
+    st.write(df)
     cm=confusion_matrix(test_data["categories"].to_list(),pipe.predict(test_data["text"].to_list()))
     fig, ax = st.pyplot.subplots(figsize=(7.5, 7.5))
     ax.matshow(cm, cmap=plt.cm.Blues, alpha=0.3)
@@ -20,15 +29,6 @@ def confusion_matrix():
     st.pyplot.ylabel('Actuals', fontsize=18)
     st.pyplot.title('Confusion Matrix', fontsize=18)
     st.pyplot.show()
-
-def get_metrics(pipe):
-    test_data=pd.read_csv("datasets/test_data_tagging.csv")
-    st.write('Accuracy of this model ' + str(pipe.score(test_data["text"].to_list(),test_data["categories"].to_list())))
-    st.write("Classification Report : ")
-    report=classification_report(test_data["categories"].to_list(),pipe.predict(test_data["text"].to_list()),output_dict=True)
-    df = pd.DataFrame(report).transpose()
-    st.write(df)
-    confusion_matrix()
 
 def app():
     label_dict={0:"Active Life", 1:"Automotive",2:"Beauty & Spas",3:"Restaurants",4:"Shopping"}
