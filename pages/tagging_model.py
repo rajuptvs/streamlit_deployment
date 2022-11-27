@@ -20,15 +20,15 @@ def get_metrics(pipe):
     st.write(df)
     cm=confusion_matrix(test_data["categories"].to_list(),pipe.predict(test_data["text"].to_list()))
     st.write("Confusion Matrix : ")
-    fig, ax = plt.subplots(figsize=(1,1))
+    fig, ax = plt.subplots(figsize=(2,2))
 
     ax.matshow(cm, cmap=plt.cm.Blues, alpha=0.3)
     for i in range(cm.shape[0]):
         for j in range(cm.shape[1]):
-            ax.text(x=j, y=i,s=cm[i, j], va='center', ha='center', size='large')
-    plt.xlabel('Predictions', fontsize=18)
-    plt.ylabel('Actuals', fontsize=18)
-    plt.title('Confusion Matrix', fontsize=18)
+            ax.text(x=j, y=i,s=cm[i, j], va='center', ha='center')
+    plt.xlabel('Predictions')
+    plt.ylabel('Actuals')
+    plt.title('Confusion Matrix')
     st.pyplot(fig)
 
 def app():

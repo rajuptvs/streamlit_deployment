@@ -20,10 +20,10 @@ def get_metrics(pipe):
     ax.matshow(cm, cmap=plt.cm.Blues, alpha=0.3)
     for i in range(cm.shape[0]):
         for j in range(cm.shape[1]):
-            ax.text(x=j, y=i,s=cm[i, j], va='center', ha='center', size='large')
-    plt.xlabel('Predictions', fontsize=18)
-    plt.ylabel('Actuals', fontsize=18)
-    plt.title('Confusion Matrix', fontsize=18)
+            ax.text(x=j, y=i,s=cm[i, j], va='center', ha='center')
+    plt.xlabel('Predictions')
+    plt.ylabel('Actuals')
+    plt.title('Confusion Matrix')
     st.pyplot(fig)
     
 def app():
