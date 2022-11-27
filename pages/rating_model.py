@@ -15,7 +15,7 @@ def get_metrics(pipe):
     df = pd.DataFrame(report).transpose()
     st.write(df)
     st.write("Confusion Matrix : ")
-    cm=confusion_matrix(test_data["categories"].to_list(),pipe.predict(test_data["text"].to_list()))
+    cm=confusion_matrix(test_data["rating"].to_list(),pipe.predict(test_data["text"].to_list()))
     fig, ax = plt.subplots(figsize=(1,1))
     ax.matshow(cm, cmap=plt.cm.Blues, alpha=0.3)
     for i in range(cm.shape[0]):
